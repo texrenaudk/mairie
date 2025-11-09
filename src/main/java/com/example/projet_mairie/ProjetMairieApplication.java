@@ -13,13 +13,7 @@ public class ProjetMairieApplication {
 		SpringApplication.run(ProjetMairieApplication.class, args);
 	}
 
-	@RestController
-	public class HomeController {
 
-		@GetMapping("/")
-		public String home() {
-			return "Bonjour et bienvenue sur mon application Spring Boot !";
-		}
-	}
+
 
 }

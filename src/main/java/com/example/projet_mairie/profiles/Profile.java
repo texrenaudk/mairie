@@ -20,12 +20,15 @@ public class Profile {
     @GeneratedValue(strategy = GenerationType.SEQUENCE,generator = "profile_seq_generator")
     @SequenceGenerator(name = "profile_seq_generator", sequenceName = "profile_id_seq", allocationSize = 20)
     private long id;
+
+    @Enumerated(EnumType.STRING)
     private Civilities civility;
     private String lastname;
     private String firstName;
     private String phone;
     private  String email;
-    @ManyToOne(cascade = {CascadeType.MERGE, CascadeType.DETACH})
+    private boolean isProfileCancelled;
+    @OneToOne(cascade = {CascadeType.PERSIST})
     @JoinColumn(name = "address_id")
     private Address address;
 
