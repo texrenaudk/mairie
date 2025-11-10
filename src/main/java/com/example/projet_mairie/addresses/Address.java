@@ -19,4 +19,5 @@ public class Address {
     private String city;
     private String via;
     private long cap;
+    private String paese;
 }

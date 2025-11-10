@@ -1,14 +1,32 @@
 package com.example.projet_mairie.testData;
 
 import com.example.projet_mairie.addresses.Address;
+import com.example.projet_mairie.dtos.ProfileForUpdateDto;
 import com.example.projet_mairie.profiles.Civilities;
 import com.example.projet_mairie.profiles.Profile;
 
-public class ProfileTetData {
+import java.util.ArrayList;
+import java.util.List;
+
+public class ProfileTestData {
     public static final Profile PROFILE_JEAN = createJeanProfile();
     public static final Profile PROFILE_MARIE = createMarieProfile();
     public static final Profile PROFILE_CANCELLED = createCancelledProfile();
+    public static final List<Profile> PROFILE_LIST = getProfils();
     public static final Address ADDRESS_PARIS = createParisAddress();
+    public static final Profile PROFILE_JEAN_UPDATED = updatedProfileJean();
+    public static final Profile PROFILE_ACTIVE = createActiveProfile();
+
+    private static Profile updatedProfileJean() {
+
+        ProfileForUpdateDto profileForUpdateDto = new ProfileForUpdateDto("Jean","texDupon@gmail.com","011122233", ADDRESS_PARIS);
+        PROFILE_JEAN.setEmail(profileForUpdateDto.email());
+        PROFILE_JEAN.setLastname(profileForUpdateDto.lastName());
+        PROFILE_JEAN.setPhone(profileForUpdateDto.phone());
+        PROFILE_MARIE.setAddress(profileForUpdateDto.address());
+        return PROFILE_JEAN;
+
+    }
 
     static {
         PROFILE_JEAN.setId(100L);
@@ -57,5 +75,22 @@ public class ProfileTetData {
         address.setCap(75001);
         address.setPaese("France");
         return address;
+    }
+    private static List<Profile> getProfils(){
+        List<Profile> listeProfiles = new ArrayList<>();
+        listeProfiles.add(PROFILE_JEAN);
+        listeProfiles.add(PROFILE_MARIE);
+        return listeProfiles;
+    }
+
+    public static Profile createActiveProfile() {
+        Profile profile = new Profile();
+        profile.setCivility(Civilities.Mr);
+        profile.setLastname("Durand");
+        profile.setFirstName("Pierre");
+        profile.setPhone("0698765432");
+        profile.setEmail("pierre.durand@mairie.fr");
+        profile.setProfileCancelled(false);
+        return profile;
     }
 }
