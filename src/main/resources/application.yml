@@ -29,3 +29,17 @@ spring.security.enabled=false
 # `validate` valide le schéma existant.
 spring.jpa.hibernate.ddl-auto=update
 
+mail:
+host: smtp.ethereal.email
+port: 587
+username: christopher54@ethereal.email
+password: SQaV9vV3NnZR9BkRHA
+properties:
+mail:
+smtp:
+auth: true
+starttls:
+enable: true
+connectiontimeout: 5000
+timeout: 5000
+writetimeout: 5000
